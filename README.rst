@@ -42,6 +42,52 @@ For general help, see:
 The mailing lists and discussion forums provide a wealth of support and knowledge
 for you to tap into. Feel free to drop by with your questions or discussion.
 
+Bringing up the Database
+------------------------
+
+The quickest way to run a single-node Wekeza DB instance is with Docker
+Compose.  Make sure you have `Docker <https://docs.docker.com/get-docker/>`_
+and the Compose plugin (``docker compose``) installed.
+
+Before starting the database, set the required environment variables for the
+admin credentials and security secrets:
+
+.. code-block:: bash
+
+    export WEKEZADB_USER=admin
+    export WEKEZADB_PASSWORD=<strong-password>
+    export WEKEZADB_SECRET=$(openssl rand -hex 32)
+    export WEKEZADB_COOKIE=$(openssl rand -hex 32)
+
+Then start the service:
+
+.. code-block:: bash
+
+    docker compose up -d
+
+The HTTP API will be available at http://localhost:5984 and the Fauxton
+admin UI at http://localhost:5984/_utils.
+
+You can also place these variables in a ``.env`` file in the project root
+so you do not have to export them each time:
+
+.. code-block:: bash
+
+    WEKEZADB_USER=admin
+    WEKEZADB_PASSWORD=<strong-password>
+    WEKEZADB_SECRET=<random-hex-string>
+    WEKEZADB_COOKIE=<random-hex-string>
+
+To stop the service run:
+
+.. code-block:: bash
+
+    docker compose down
+
+Data is persisted in Docker-managed volumes (``wekezadb_data`` and
+``wekezadb_config``) so it survives container restarts.  To remove the
+volumes as well, run ``docker compose down -v``.
+
 Verifying your Installation
 ---------------------------
 
