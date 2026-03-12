@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Configures CouchDB for building.
+    Configures Wekeza DB for building.
 .DESCRIPTION
     This command is responsible for generating the build
-    system for Apache CouchDB.
+    system for Wekeza DB.
 
   -DisableFauxton            request build process skip building Fauxton (default false)
   -DisableDocs               request build process skip building documentation (default false)
@@ -141,9 +141,9 @@ If (-Not $DisableSpiderMonkey) {
     }
 }
 
-# Translate ./configure variables to CouchDB variables
-$PackageAuthorName="The Apache Software Foundation"
-$InstallDir="$LibDir\couchdb"
+# Translate ./configure variables to Wekeza DB variables
+$PackageAuthorName="Wekeza Bank"
+$InstallDir="$LibDir\wekezadb"
 $LogFile="$LogDir\couch.log"
 $BuildFauxton = (-not $DisableFauxton).ToString().ToLower()
 $BuildDocs = (-not $DisableDocs).ToString().ToLower()
@@ -397,4 +397,4 @@ if ( (Test-Path .git -PathType Container) -and (-not $SkipDeps) ) {
 
 Pop-Location
 [Environment]::CurrentDirectory = $PWD
-Write-Output "You have configured Apache CouchDB, time to relax. Relax."
+Write-Output "You have configured Wekeza DB, time to relax. Relax."

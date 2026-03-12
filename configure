@@ -19,7 +19,7 @@
 rootdir="$(cd "${0%/*}" 2>/dev/null; echo "$PWD")"
 basename=`basename $0`
 
-PACKAGE_AUTHOR_NAME="The Apache Software Foundation"
+PACKAGE_AUTHOR_NAME="Wekeza Bank"
 
 REBAR3_BRANCH="3.25.1"
 ERLFMT_VERSION="v1.7.0"
@@ -56,7 +56,7 @@ display_help () {
 Usage: $basename [OPTION]
 
 The $basename command is responsible for generating the build
-system for Apache CouchDB.
+system for Wekeza DB.
 
 Options:
 
@@ -575,4 +575,4 @@ for path in $(find src -name .git -type d); do
         echo "WARNING unexpected .git directory $path"
 done
 
-echo "You have configured Apache CouchDB, time to relax. Relax."
+echo "You have configured Wekeza DB, time to relax. Relax."

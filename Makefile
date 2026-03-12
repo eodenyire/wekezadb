@@ -387,59 +387,59 @@ xref:
 dist: all derived
 	@./build-aux/couchdb-build-release.sh $(COUCHDB_VERSION)
 
-	@cp -r share/www apache-couchdb-$(COUCHDB_VERSION)/share/
-	@mkdir -p apache-couchdb-$(COUCHDB_VERSION)/share/docs/html
-	@cp -r src/docs/build/html apache-couchdb-$(COUCHDB_VERSION)/share/docs/
+	@cp -r share/www wekezadb-$(COUCHDB_VERSION)/share/
+	@mkdir -p wekezadb-$(COUCHDB_VERSION)/share/docs/html
+	@cp -r src/docs/build/html wekezadb-$(COUCHDB_VERSION)/share/docs/
 
-	@mkdir -p apache-couchdb-$(COUCHDB_VERSION)/share/docs/man
-	@cp src/docs/build/man/apachecouchdb.1 apache-couchdb-$(COUCHDB_VERSION)/share/docs/man/
+	@mkdir -p wekezadb-$(COUCHDB_VERSION)/share/docs/man
+	@cp src/docs/build/man/apachecouchdb.1 wekezadb-$(COUCHDB_VERSION)/share/docs/man/wekezadb.1
 
 ifeq ($(with_spidermonkey), false)
-	@rm -rf apache-couchdb-$(COUCHDB_VERSION)/src/couch/priv/couch_js
+	@rm -rf wekezadb-$(COUCHDB_VERSION)/src/couch/priv/couch_js
 endif
-	@tar czf apache-couchdb-$(COUCHDB_VERSION)$(IN_RC).tar.gz apache-couchdb-$(COUCHDB_VERSION)
-	@echo "Done: apache-couchdb-$(COUCHDB_VERSION)$(IN_RC).tar.gz"
+	@tar czf wekezadb-$(COUCHDB_VERSION)$(IN_RC).tar.gz wekezadb-$(COUCHDB_VERSION)
+	@echo "Done: wekezadb-$(COUCHDB_VERSION)$(IN_RC).tar.gz"
 
 
 .PHONY: release
-# target: release - Create an Erlang release including CouchDB!
+# target: release - Create an Erlang release including Wekeza DB!
 release: all
-	@echo "Installing CouchDB into rel/couchdb/ ..."
-	@rm -rf rel/couchdb
+	@echo "Installing Wekeza DB into rel/wekezadb/ ..."
+	@rm -rf rel/wekezadb
 	@$(REBAR) generate # make full erlang release
-	@cp bin/weatherreport rel/couchdb/bin/weatherreport
+	@cp bin/weatherreport rel/wekezadb/bin/weatherreport
 
 ifeq ($(with_spidermonkey), true)
-	@mkdir -p rel/couchdb/share/server
-	@cp src/couch/priv/couchjs rel/couchdb/bin/couchjs
-	@cp share/server/main.js rel/couchdb/share/server/main.js
-	@cp share/server/main-ast-bypass.js rel/couchdb/share/server/main-ast-bypass.js
-	@cp share/server/main-coffee.js rel/couchdb/share/server/main-coffee.js
+	@mkdir -p rel/wekezadb/share/server
+	@cp src/couch/priv/couchjs rel/wekezadb/bin/couchjs
+	@cp share/server/main.js rel/wekezadb/share/server/main.js
+	@cp share/server/main-ast-bypass.js rel/wekezadb/share/server/main-ast-bypass.js
+	@cp share/server/main-coffee.js rel/wekezadb/share/server/main-coffee.js
 endif
 
 ifeq ($(with_fauxton), true)
-	@mkdir -p rel/couchdb/share/
-	@cp -R share/www rel/couchdb/share/
+	@mkdir -p rel/wekezadb/share/
+	@cp -R share/www rel/wekezadb/share/
 endif
 
 ifeq ($(with_docs), true)
 ifeq ($(IN_RELEASE), true)
-	@mkdir -p rel/couchdb/share/www/docs/
-	@mkdir -p rel/couchdb/share/docs/
-	@cp -R share/docs/html/* rel/couchdb/share/www/docs/
-	@cp share/docs/man/apachecouchdb.1 rel/couchdb/share/docs/couchdb.1
+	@mkdir -p rel/wekezadb/share/www/docs/
+	@mkdir -p rel/wekezadb/share/docs/
+	@cp -R share/docs/html/* rel/wekezadb/share/www/docs/
+	@cp share/docs/man/apachecouchdb.1 rel/wekezadb/share/docs/wekezadb.1
 else
-	@mkdir -p rel/couchdb/share/www/docs/
-	@mkdir -p rel/couchdb/share/docs/
-	@cp -R src/docs/build/html/ rel/couchdb/share/www/docs
-	@cp src/docs/build/man/apachecouchdb.1 rel/couchdb/share/docs/couchdb.1
+	@mkdir -p rel/wekezadb/share/www/docs/
+	@mkdir -p rel/wekezadb/share/docs/
+	@cp -R src/docs/build/html/ rel/wekezadb/share/www/docs
+	@cp src/docs/build/man/apachecouchdb.1 rel/wekezadb/share/docs/wekezadb.1
 endif
 endif
 
 ifeq ($(with_nouveau), true)
-	@mkdir rel/couchdb/nouveau
+	@mkdir rel/wekezadb/nouveau
 	@cd extra/nouveau && $(GRADLE) installDist
-	@cp -R extra/nouveau/build/install/nouveau rel/couchdb
+	@cp -R extra/nouveau/build/install/nouveau rel/wekezadb
 endif
 
 	@echo "... done"
