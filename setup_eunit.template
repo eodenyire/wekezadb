@@ -1,9 +1,9 @@
 {variables, [
-    {package_author_name, "The Apache Software Foundation"},
+    {package_author_name, "Wekeza Bank"},
     {cluster_port, 0},
     {backend_port, 0},
     {prometheus_port, 0},
-    {node_name, "-name couchdbtest@127.0.0.1"},
+    {node_name, "-name wekezadbtest@127.0.0.1"},
 
     {data_dir, "/tmp"},
     {prefix, "/tmp"},

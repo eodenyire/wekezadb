@@ -117,7 +117,7 @@ def setup_argparse():
 
 
 def get_args_parser():
-    parser = optparse.OptionParser(description="Runs CouchDB dev cluster")
+    parser = optparse.OptionParser(description="Runs Wekeza DB dev cluster")
     parser.add_option(
         "-a",
         "--admin",
@@ -323,7 +323,7 @@ def ensure_dir_exists(root, *segments):
     return path
 
 
-@log("Ensure CouchDB is built")
+@log("Ensure Wekeza DB is built")
 def check_beams(ctx):
     for fname in glob.glob(os.path.join(ctx["devdir"], "*.erl")):
         sp.check_call(["erlc", "-o", ctx["devdir"] + os.sep, fname])
@@ -350,7 +350,7 @@ def setup_configs(ctx):
         )
         env = {
             "prefix": toposixpath(ctx["rootdir"]),
-            "package_author_name": "The Apache Software Foundation",
+            "package_author_name": "Wekeza Bank",
             "data_dir": toposixpath(
                 ensure_dir_exists(ctx["devdir"], "lib", node, "data")
             ),

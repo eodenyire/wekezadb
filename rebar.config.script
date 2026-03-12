@@ -43,7 +43,7 @@ end.
 
 ErlangTooOld = fun(Ver) ->
     DisplayMsg(
-        "This version of Erlang (~p) is too old for use with Apache CouchDB.~n~n"
+        "This version of Erlang (~p) is too old for use with Wekeza DB.~n~n"
         "See https://docs.couchdb.org/en/stable/install/unix.html#dependencies~n"
         "for the latest information on dependencies.",
         [Ver]
@@ -53,8 +53,8 @@ end.
 
 NotSupported = fun(Ver) ->
     DisplayMsg(
-        "This version of Erlang (~p) is not officially supported by Apache~n"
-        "CouchDB. While we do not officially support this version, there~n"
+        "This version of Erlang (~p) is not officially supported by~n"
+        "Wekeza DB. While we do not officially support this version, there~n"
         "are also no known bugs or incompatibilities.~n~n"
         "See https://docs.couchdb.org/en/stable/install/unix.html#dependencies~n"
         "for the latest information on dependencies.",
@@ -65,7 +65,7 @@ end.
 BadErlang = fun(Ver) ->
     DisplayMsg(
         "This version of Erlang (~p) is known to contain bugs that directly~n"
-        "affect the correctness of Apache CouchDB.~n~n"
+        "affect the correctness of Wekeza DB.~n~n"
         "You should *NOT* use this version of Erlang.~n~n"
         "See https://docs.couchdb.org/en/stable/install/unix.html#dependencies~n"
         "for the latest information on dependencies.",

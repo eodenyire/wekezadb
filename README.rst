@@ -1,14 +1,9 @@
-Apache CouchDB README
-=====================
+Wekeza DB README
+================
 
-+---------+
-| |1| |2| |
-+---------+
-
-.. |1| image:: https://ci-couchdb.apache.org/job/jenkins-cm1/job/FullPlatformMatrix/job/main/badge/icon?subject=main
-    :target: https://ci-couchdb.apache.org/blue/organizations/jenkins/jenkins-cm1%2FFullPlatformMatrix/activity?branch=main
-.. |2| image:: https://readthedocs.org/projects/couchdb/badge/?version=latest
-    :target: https://docs.couchdb.org/en/latest/?badge=latest
+Wekeza DB is a customised database engine for `Wekeza Bank <https://github.com/eodenyire/wekezadb>`_,
+built on top of Apache CouchDB. It provides a robust, distributed, document-oriented
+database tailored for financial-services workloads.
 
 Installation
 ------------
@@ -21,7 +16,7 @@ For a high-level guide to Microsoft Windows, see:
 
     INSTALL.Windows
 
-Follow the proper instructions to get CouchDB installed on your system.
+Follow the proper instructions to get Wekeza DB installed on your system.
 
 If you're having problems, skip to the next section.
 
@@ -42,20 +37,15 @@ For troubleshooting or cryptic error messages, see:
 
 For general help, see:
 
-     https://couchdb.apache.org/#mailing-list
+     https://github.com/eodenyire/wekezadb/discussions
 
-We also have an IRC channel:
-
-    https://web.libera.chat/#couchdb
-
-The mailing lists provide a wealth of support and knowledge for you to tap into.
-Feel free to drop by with your questions or discussion. See the official CouchDB
-website for more information about our community resources.
+The mailing lists and discussion forums provide a wealth of support and knowledge
+for you to tap into. Feel free to drop by with your questions or discussion.
 
 Verifying your Installation
 ---------------------------
 
-Run a basic test suite for CouchDB by browsing here:
+Run a basic test suite for Wekeza DB by browsing here:
 
     http://127.0.0.1:5984/_utils/#verifyinstall
 
@@ -64,12 +54,11 @@ Getting started with developing
 
 **Quickstart:**
 
-
 .. image:: https://img.shields.io/static/v1?label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode
-    :target: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/apache/couchdb
+    :target: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/eodenyire/wekezadb
 
 If you already have VS Code and Docker installed, you can click the badge above or
-`here <https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/apache/couchdb>`_
+`here <https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/eodenyire/wekezadb>`_
 to get started. Clicking these links will cause VS Code to automatically install the
 Remote - Containers extension if needed, clone the source code into a container volume,
 and spin up a dev container for use.
@@ -97,40 +86,19 @@ Fauxton. To fix the admin party you have to run ``./dev/run`` with the ``admin``
 flag, e.g. ``./dev/run --admin=username:password``. If you want to have an
 admin-party, just omit the flag.
 
-Contributing to CouchDB
------------------------
+Contributing to Wekeza DB
+-------------------------
 
 You can learn more about our contributing process here:
 
-    https://github.com/apache/couchdb/blob/main/CONTRIBUTING.md
+    https://github.com/eodenyire/wekezadb/blob/main/CONTRIBUTING.md
 
 Acknowledgments
 ---------------
 
-This project is proudly supported by:
-
-|3|
-
-`IBM Cloudant <https://www.ibm.com/products/cloudant>`_
-
-|5|
-
-|6|
-
-|7|
-
-.. |3| image:: https://couchdb.apache.org/image/macstadium-logo.png
-    :width: 150
-    :target: https://www.macstadium.com
-.. |5| image:: https://couchdb.apache.org/image/neighbourhoodie-logo-with-n.svg
-    :width: 150
-    :target: https://neighbourhood.ie/couchdb-support
-.. |6| image:: https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.png
-    :width: 150
-    :target: https://www.digitalocean.com
-.. |7| image:: https://couchdb.apache.org/image/netcup_logo_RGB_color.svg
-    :width: 150
-    :target: https://www.netcup.com
+Wekeza DB is built on top of Apache CouchDB. We gratefully acknowledge
+the Apache CouchDB community and The Apache Software Foundation for
+their foundational work.
 
 Cryptographic Software Notice
 -----------------------------
@@ -147,11 +115,10 @@ The U.S. Government Department of Commerce, Bureau of Industry and Security
 (BIS), has classified this software as Export Commodity Control Number (ECCN)
 5D002.C.1, which includes information security software using or performing
 cryptographic functions with asymmetric algorithms. The form and manner of this
-Apache Software Foundation distribution makes it eligible for export under the
-License Exception ENC Technology Software Unrestricted (TSU) exception (see the
-BIS Export Administration Regulations, Section 740.13) for both object code and
-source code.
+distribution makes it eligible for export under the License Exception ENC
+Technology Software Unrestricted (TSU) exception (see the BIS Export
+Administration Regulations, Section 740.13) for both object code and source code.
 
 The following provides more details on the included cryptographic software:
 
-CouchDB includes a HTTP client (ibrowse) with SSL functionality.
+Wekeza DB includes a HTTP client (ibrowse) with SSL functionality.

@@ -22,18 +22,18 @@
 # CouchDB recommends the following values for this flag:
 #
 # 1. If this is a single node, not in a cluster, use:
-#    -name couchdb@127.0.0.1
+#    -name wekezadb@127.0.0.1
 #
 # 2. If DNS is configured for this host, use the FQDN, such as:
-#    -name couchdb@my.host.domain.com
+#    -name wekezadb@my.host.domain.com
 #
 # 3. If DNS isn't configured for this host, use IP addresses only, such as:
-#    -name couchdb@192.168.0.1
+#    -name wekezadb@192.168.0.1
 #
 # Do not rely on tricks with /etc/hosts or libresolv to handle anything
 # other than the above 3 approaches correctly. They will not work reliably.
 #
-# Multiple CouchDBs running on the same machine can use couchdb1@, couchdb2@,
+# Multiple Wekeza DB nodes running on the same machine can use wekezadb1@, wekezadb2@,
 # etc.
 {{node_name}}
 
@@ -107,7 +107,7 @@
 ##     {client,
 ##      [{secure_renegotiate, true}]}].
 ##
-## CouchDB recommends the following values for no_tls flag:
+## Wekeza DB recommends the following values for no_tls flag:
 ## 1. Use TCP only, set to true, such as:
 ##      -couch_dist no_tls true
 ## 2. Use TLS only, set to false, such as:
