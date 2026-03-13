@@ -1,0 +1,63 @@
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
+# use this file except in compliance with the License. You may obtain a copy of
+# the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations under
+# the License.
+
+# Wekeza DB – Docker Compose configuration
+#
+# Starts a single-node Wekeza DB instance (built on CouchDB 3.5.1).
+#
+# Quick start:
+#   docker compose up -d
+#
+# The HTTP API will be available at http://localhost:5984
+# Fauxton admin UI: http://localhost:5984/_utils
+#
+# Override credentials by exporting environment variables before running:
+#   export WEKEZADB_USER=admin WEKEZADB_PASSWORD=mysecretpassword
+#   docker compose up -d
+
+services:
+  wekezadb:
+    image: couchdb:3.5.1
+    container_name: wekezadb
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    environment:
+      # Admin credentials – REQUIRED: set these via environment variables or a
+      # .env file before running in any non-local environment.
+      # Example: WEKEZADB_USER=admin WEKEZADB_PASSWORD=<strong-password> docker compose up -d
+      COUCHDB_USER: ${WEKEZADB_USER:?Set WEKEZADB_USER before starting WekezaDB}
+      COUCHDB_PASSWORD: ${WEKEZADB_PASSWORD:?Set WEKEZADB_PASSWORD before starting WekezaDB}
+      # Shared secret used for consistent hashing across cluster nodes.
+      # REQUIRED: must be a securely generated random value.
+      COUCHDB_SECRET: ${WEKEZADB_SECRET:?Set WEKEZADB_SECRET to a random value before starting WekezaDB}
+      # Erlang node name – follows the wekezadb@ naming convention
+      NODENAME: wekezadb@127.0.0.1
+      # Erlang distributed cookie – REQUIRED: must be a securely generated random value.
+      ERL_FLAGS: "-setcookie ${WEKEZADB_COOKIE:?Set WEKEZADB_COOKIE to a random value before starting WekezaDB}"
+    volumes:
+      # Persist database files across container restarts
+      - wekezadb_data:/opt/couchdb/data
+      # Persist configuration overrides across container restarts
+      - wekezadb_config:/opt/couchdb/etc/local.d
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  wekezadb_data:
+    driver: local
+  wekezadb_config:
+    driver: local
